@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "../../data/server";
+import { Link } from "react-router-dom";
+import "../../../data/server";
 
 const Vans = () => {
     const [vans, setVans] = useState([]);
-    const navigate = useNavigate();
-    
+
     useEffect(() => {
         fetch("/api/vans")
             .then((res) => res.json())
@@ -19,7 +18,7 @@ const Vans = () => {
             <div className="van-list">
                 {vans.map((van) => (
                     <div key={van.id} className="van-tile">
-                        <div onClick={() => navigate(`/vans/${van.id}`)}>
+                        <Link to={`/vans/${van.id}`}>
                             <img src={van.imageUrl} />
                             <div className="van-info">
                                 <h3>{van.name}</h3>
@@ -31,7 +30,7 @@ const Vans = () => {
                             <i className={`van-type ${van.type} selected`}>
                                 {van.type}
                             </i>
-                        </div>
+                        </Link>
                     </div>
                 ))}
             </div>
