@@ -18,7 +18,7 @@ const HostVans = () => {
                 {vans.length > 0 ? (
                     vans.map((van) => (
                         <Link
-                            to={`/host/vans/${van.id}`}
+                            to={van.id}
                             key={van.id}
                             className="host-van-link-wrapper"
                         >
